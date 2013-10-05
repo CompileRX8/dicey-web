@@ -1,0 +1,513 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>Simple CLJS</title>
+        <style type="text/css">
+            body {
+                margin: 0px;
+                padding: 0px;
+            }
+            .label-large {
+                font: 10px sans-serif;
+                text-transform: uppercase;
+            }
+            .label-medium {
+                font: 8px sans-serif;
+                text-transform: uppercase;
+            }
+            .label-small {
+                font: 6px sans-serif;
+                text-transform: uppercase;
+            }
+            .center {
+                text-align: center;
+            }
+            .header-value {
+                border-style: none none solid none;
+                border-width: 1px;
+                border-color: #666666;
+                background-color: #FFFFFF;
+            }
+            .header-value-full-size {
+                width: 250px;
+            }
+            .header-value-half-size {
+                width: 125px;
+            }
+            .header-block {
+                float: left;
+                display: block;
+            }
+            .stat-label {
+                font: 14px sans-serif;
+                font-weight: bold;
+                display: inline-block;
+                vertical-align: text-bottom;
+            }
+            .ability-label {
+                width: 40px;
+                text-transform: uppercase;
+            }
+            .ability-label-long {
+                width: 70px;
+            }
+            .save-label {
+                width: 70px;
+            }
+            .combat-label {
+                width: 85px;
+            }
+            .stat-value {
+                text-align: right;
+                border-style: none;
+                vertical-align: baseline;
+            }
+            .stat-block {
+                margin: 3px;
+                padding: 3px;
+                border: 3px solid #666666;
+                background-color: #dddddd;
+                border-top-left-radius: 5px;
+                border-top-right-radius: 5px;
+                border-bottom-left-radius: 5px;
+                border-bottom-right-radius: 5px;
+                display: inline-block;
+            }
+            .stat-table {
+            }
+            .stat-table tr,td {
+                padding: 0px;
+                border: 0px solid #666666;
+                border-collapse: collapse;
+            }
+            #ability-block {
+            }
+            #save-block {
+            }
+            #combat-block {
+            }
+            .column {
+                height: 100%;
+                padding: 0px;
+                margin: 0px;
+            }
+            .stat-column {
+                display: inline-block;
+                vertical-align: baseline;
+                text-align: center;
+            }
+            #left-column {
+                width: 25%;
+                min-width: 130px;
+                float: left;
+            }
+            #center-column {
+                width: 50%;
+                min-width: 250px;
+                float: left;
+            }
+            #right-column {
+                width: 25%;
+                min-width: 130px;
+                float: right;
+            }
+        </style>
+    </head>
+    <body>
+        <div id="header" class="stat-block">
+            <div class="header-block">
+                <input type="text" class="header-value header-value-full-size" id="charactername" disabled/><br/>
+                <div class="label-medium">Character Name</div>
+            </div>
+            <div class="header-block">
+                <input type="text" class="header-value header-value-full-size" id="playername" disabled/><br/>
+                <div class="label-medium">Player Name</div>
+            </div>
+            <div class="header-block">
+                <input type="text" class="header-value header-value-half-size" id="deity" disabled/><br/>
+                <div class="label-medium">Deity</div>
+            </div>
+            <div class="header-block">
+                <input type="text" class="header-value header-value-half-size" id="region" disabled/><br/>
+                <div class="label-medium">Region</div>
+            </div>
+            <div class="header-block">
+                <input type="text" class="header-value header-value-half-size" id="align" disabled/><br/>
+                <div class="label-medium">Alignment</div>
+            </div>
+            <div style="clear: both;"></div>
+            <div class="header-block">
+                <input type="text" class="header-value header-value-full-size" id="class-description" disabled/><br/>
+                <div class="label-medium">Class</div>
+            </div>
+            <div class="header-block">
+                <input type="text" class="header-value header-value-half-size" id="race" disabled/><br/>
+                <div class="label-medium">Race</div>
+            </div>
+            <div class="header-block">
+                <input type="text" class="header-value header-value-half-size" id="size-description" disabled/><br/>
+                <div class="label-medium">Size / Face</div>
+            </div>
+            <div class="header-block">
+                <input type="text" class="header-value header-value-half-size" id="height" disabled/><br/>
+                <div class="label-medium">Height</div>
+            </div>
+            <div class="header-block">
+                <input type="text" class="header-value header-value-half-size" id="weight" disabled/><br/>
+                <div class="label-medium">Weight</div>
+            </div>
+            <div class="header-block">
+                <input type="text" class="header-value header-value-half-size" id="vision" disabled/><br/>
+                <div class="label-medium">Vision</div>
+            </div>
+            <div style="clear: both;"></div>
+            <div class="header-block">
+                <input type="text" class="header-value header-value-half-size" id="char-level" disabled/><br/>
+                <div class="label-medium">Character Level / CR</div>
+            </div>
+            <div class="header-block">
+                <input type="text" class="header-value header-value-half-size" id="experience" disabled/><br/>
+                <div class="label-medium">EXP / Next Level</div>
+            </div>
+            <div class="header-block">
+                <input type="text" class="header-value header-value-half-size" id="age" disabled/><br/>
+                <div class="label-medium">Age</div>
+            </div>
+            <div class="header-block">
+                <input type="text" class="header-value header-value-half-size" id="gender" disabled/><br/>
+                <div class="label-medium">Gender</div>
+            </div>
+            <div class="header-block">
+                <input type="text" class="header-value header-value-half-size" id="eyecolor" disabled/><br/>
+                <div class="label-medium">Eyes</div>
+            </div>
+            <div class="header-block">
+                <input type="text" class="header-value header-value-half-size" id="haircolor" disabled/><br/>
+                <div class="label-medium">Hair</div>
+            </div>
+            <div class="header-block">
+                <input type="text" class="header-value header-value-half-size" id="poolpoints" disabled/><br/>
+                <div class="label-medium">Points</div>
+            </div>
+            <div style="clear:both;"></div>
+        </div>
+        <div id="left-column" class="column">
+            <div id="ability-block" class="stat-block">
+                <div class="stat-label ability-label-long">Hit Points</div>
+                <input type="text" class="stat-value" id="hp" size="7" disabled/>
+                <table class="stat-table">
+                    <tr>
+                        <td></td>
+                        <td class="label-small center">Ability Score</td>
+                        <td class="label-small center">Ability Modifier</td>
+                        <td class="label-small center">Temp Score</td>
+                        <td class="label-small center">Temp Modifier</td>
+                    </tr>
+                    <tr>
+                        <td><div id="str-label" class="stat-label ability-label">STR</div></td>
+                        <td><input type="text" class="stat-value" id="stat-str" size="3" disabled/></td>
+                        <td><input type="text" class="stat-value" id="stat-str-mod" size="3" disabled/></td>
+                        <td><input type="text" class="stat-value" id="stat-str-temp" size="3"/></td>
+                        <td><input type="text" class="stat-value" id="stat-str-temp-mod" size="3" disabled/></td>
+                    </tr>
+                    <tr>
+                        <td><div id="dex-label" class="stat-label ability-label">DEX</div></td>
+                        <td><input type="text" class="stat-value" id="stat-dex" size="3" disabled/></td>
+                        <td><input type="text" class="stat-value" id="stat-dex-mod" size="3" disabled/></td>
+                        <td><input type="text" class="stat-value" id="stat-dex-temp" size="3"/></td>
+                        <td><input type="text" class="stat-value" id="stat-dex-temp-mod" size="3" disabled/></td>
+                    </tr>
+                    <tr>
+                        <td><div id="con-label" class="stat-label ability-label">CON</div></td>
+                        <td><input type="text" class="stat-value" id="stat-con" size="3" disabled/></td>
+                        <td><input type="text" class="stat-value" id="stat-con-mod" size="3" disabled/></td>
+                        <td><input type="text" class="stat-value" id="stat-con-temp" size="3"/></td>
+                        <td><input type="text" class="stat-value" id="stat-con-temp-mod" size="3" disabled/></td>
+                    </tr>
+                    <tr>
+                        <td><div id="int-label" class="stat-label ability-label">INT</div></td>
+                        <td><input type="text" class="stat-value" id="stat-int" size="3" disabled/></td>
+                        <td><input type="text" class="stat-value" id="stat-int-mod" size="3" disabled/></td>
+                        <td><input type="text" class="stat-value" id="stat-int-temp" size="3"/></td>
+                        <td><input type="text" class="stat-value" id="stat-int-temp-mod" size="3" disabled/></td>
+                    </tr>
+                    <tr>
+                        <td><div id="wis-label" class="stat-label ability-label">WIS</div></td>
+                        <td><input type="text" class="stat-value" id="stat-wis" size="3" disabled/></td>
+                        <td><input type="text" class="stat-value" id="stat-wis-mod" size="3" disabled/></td>
+                        <td><input type="text" class="stat-value" id="stat-wis-temp" size="3"/></td>
+                        <td><input type="text" class="stat-value" id="stat-wis-temp-mod" size="3" disabled/></td>
+                    </tr>
+                    <tr>
+                        <td><div id="cha-label" class="stat-label ability-label">CHA</div></td>
+                        <td><input type="text" class="stat-value" id="stat-cha" size="3" disabled/></td>
+                        <td><input type="text" class="stat-value" id="stat-cha-mod" size="3" disabled/></td>
+                        <td><input type="text" class="stat-value" id="stat-cha-temp" size="3"/></td>
+                        <td><input type="text" class="stat-value" id="stat-cha-temp-mod" size="3" disabled/></td>
+                    </tr>
+                </table>
+                <table>
+                    <tr>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td class="label-small">Dex</td>
+                        <td></td>
+                        <td class="label-small">Misc</td>
+                    </tr>
+                    <tr>
+                        <td><div class="stat-label ability-label-long">Initiative</div></td>
+                        <td><input type="text" class="stat-value" id="initiative" size="3" disabled/></td>
+                        <td>=</td>
+                        <td><input type="text" class="stat-value" id="initiative-dex" size="3" disabled/></td>
+                        <td>+</td>
+                        <td><input type="text" class="stat-value" id="initiative-misc" size="3" disabled/></td>
+                    </tr>
+                </table>
+            </div>
+            <div id="ac-block" class="stat-block">
+                <div class="stat-label stat-column">Armor Class</div>
+                <div class="stat-column">
+                    <div class="label-small center">Total</div>
+                    <input type="text" class="stat-value" id="ac" size="3" disabled/>
+                </div>
+                <div class="stat-column">:</div>
+                <div class="stat-column">
+                    <div class="label-small center">Flat</div>
+                    <input type="text" class="stat-value" id="ac-flat" size="3" disabled/>
+                </div>
+                <div class="stat-column">:</div>
+                <div class="stat-column">
+                    <div class="label-small center">Touch</div>
+                    <input type="text" class="stat-value" id="ac-touch" size="3" disabled/>
+                </div>
+                <div class="stat-column">=</div>
+                <div class="stat-column">
+                    <div class="label-small center">Base</div>
+                    <input type="text" class="stat-value" id="ac-base" size="3" disabled/>
+                </div>
+                <div class="stat-column">+</div>
+                <div class="stat-column">
+                    <div class="label-small center">Armor</div>
+                    <input type="text" class="stat-value" id="ac-armor" size="3" disabled/>
+                </div>
+                <div class="stat-column">+</div>
+                <div class="stat-column">
+                    <div class="label-small center">Shield</div>
+                    <input type="text" class="stat-value" id="ac-shield" size="3" disabled/>
+                </div>
+                <div class="stat-column">+</div>
+                <div class="stat-column">
+                    <div class="label-small center">Stat</div>
+                    <input type="text" class="stat-value" id="ac-stat" size="3" disabled/>
+                </div>
+                <div class="stat-column">+</div>
+                <div class="stat-column">
+                    <div class="label-small center">Size</div>
+                    <input type="text" class="stat-value" id="ac-size" size="3" disabled/>
+                </div>
+                <div class="stat-column">+</div>
+                <div class="stat-column">
+                    <div class="label-small center">Natural</div>
+                    <input type="text" class="stat-value" id="ac-natural" size="3" disabled/>
+                </div>
+                <div class="stat-column">+</div>
+                <div class="stat-column">
+                    <div class="label-small center">Deflection</div>
+                    <input type="text" class="stat-value" id="ac-deflection" size="3" disabled/>
+                </div>
+                <div class="stat-column">+</div>
+                <div class="stat-column">
+                    <div class="label-small center">Dodge</div>
+                    <input type="text" class="stat-value" id="ac-dodge" size="3" disabled/>
+                </div>
+                <div class="stat-column">+</div>
+                <div class="stat-column">
+                    <div class="label-small center">Misc</div>
+                    <input type="text" class="stat-value" id="ac-misc" size="3" disabled/>
+                </div>
+            </div>
+        </div>
+        <div id="center-column" class="column">
+            <div id="combat-block" class="stat-block">
+                <div style="float: left;">
+                    <div class="stat-label combat-label">Base Attack</div>
+                    <input type="text" class="stat-value" id="base-attack" size="7" disabled/>
+                </div>
+                <div style="float: right;">
+                    <div class="stat-label combat-label">Speed</div>
+                    <input type="text" class="stat-value" id="speed" size="14" disabled/>
+                </div>
+                <table class="stat-table">
+                    <tr>
+                        <td></td>
+                        <td class="label-medium center">Total</td>
+                        <td></td>
+                        <td class="label-small center">Base Attack Bonus</td>
+                        <td></td>
+                        <td class="label-small center">Stat</td>
+                        <td></td>
+                        <td class="label-small center">Size</td>
+                        <td></td>
+                        <td class="label-small center">Misc</td>
+                        <td></td>
+                        <td class="label-small center">Epic</td>
+                        <td></td>
+                        <td class="label-small center">Temp</td>
+                    </tr>
+                    <tr>
+                        <td><div class="stat-label combat-label">Melee</div></td>
+                        <td><input type="text" class="stat-value" id="melee-attack" size="7" disabled/></td>
+                        <td>=</td>
+                        <td><input type="text" class="stat-value" id="melee-attack-base" size="7" disabled/></td>
+                        <td>+</td>
+                        <td><input type="text" class="stat-value" id="melee-attack-stat" size="3" disabled/></td>
+                        <td>+</td>
+                        <td><input type="text" class="stat-value" id="melee-attack-size" size="3" disabled/></td>
+                        <td>+</td>
+                        <td><input type="text" class="stat-value" id="melee-attack-misc" size="3" disabled/></td>
+                        <td>+</td>
+                        <td><input type="text" class="stat-value" id="melee-attack-epic" size="3" disabled/></td>
+                        <td>+</td>
+                        <td><input type="text" class="stat-value" id="melee-attack-temp" size="3"/></td>
+                    </tr>
+                    <tr>
+                        <td><div class="stat-label combat-label">Ranged</div></td>
+                        <td><input type="text" class="stat-value" id="ranged-attack" size="7" disabled/></td>
+                        <td>=</td>
+                        <td><input type="text" class="stat-value" id="ranged-attack-base" size="7" disabled/></td>
+                        <td>+</td>
+                        <td><input type="text" class="stat-value" id="ranged-attack-stat" size="3" disabled/></td>
+                        <td>+</td>
+                        <td><input type="text" class="stat-value" id="ranged-attack-size" size="3" disabled/></td>
+                        <td>+</td>
+                        <td><input type="text" class="stat-value" id="ranged-attack-misc" size="3" disabled/></td>
+                        <td>+</td>
+                        <td><input type="text" class="stat-value" id="ranged-attack-epic" size="3" disabled/></td>
+                        <td>+</td>
+                        <td><input type="text" class="stat-value" id="ranged-attack-temp" size="3"/></td>
+                    </tr>
+                    <tr>
+                        <td><div class="stat-label combat-label">CMB</div></td>
+                        <td><input type="text" class="stat-value" id="cmb-attack" size="7" disabled/></td>
+                        <td>=</td>
+                        <td><input type="text" class="stat-value" id="cmb-attack-base" size="7" disabled/></td>
+                        <td>+</td>
+                        <td><input type="text" class="stat-value" id="cmb-attack-stat" size="3" disabled/></td>
+                        <td>+</td>
+                        <td><input type="text" class="stat-value" id="cmb-attack-size" size="3" disabled/></td>
+                        <td>+</td>
+                        <td><input type="text" class="stat-value" id="cmb-attack-misc" size="3" disabled/></td>
+                        <td>+</td>
+                        <td><input type="text" class="stat-value" id="cmb-attack-epic" size="3" disabled/></td>
+                        <td>+</td>
+                        <td><input type="text" class="stat-value" id="cmb-attack-temp" size="3"/></td>
+                    </tr>
+                </table>
+                <table>
+                    <tr>
+                        <td></td>
+                        <td class="label-small center">Grapple</td>
+                        <td class="label-small center">Trip</td>
+                        <td class="label-small center">Disarm</td>
+                        <td class="label-small center">Sunder</td>
+                        <td class="label-small center">Bull Rush</td>
+                        <td class="label-small center">Overrun</td>
+                    </tr>
+                    <tr>
+                        <td><div class="stat-label combat-label">Offense</div></td>
+                        <td><input type="text" class="stat-value" id="cmb-grapple-offense" size="3" disabled/></td>
+                        <td><input type="text" class="stat-value" id="cmb-trip-offense" size="3" disabled/></td>
+                        <td><input type="text" class="stat-value" id="cmb-disarm-offense" size="3" disabled/></td>
+                        <td><input type="text" class="stat-value" id="cmb-sunder-offense" size="3" disabled/></td>
+                        <td><input type="text" class="stat-value" id="cmb-bullrush-offense" size="3" disabled/></td>
+                        <td><input type="text" class="stat-value" id="cmb-overrun-offense" size="3" disabled/></td>
+                    </tr>
+                    <tr>
+                        <td><div class="stat-label combat-label">Defense</div></td>
+                        <td><input type="text" class="stat-value" id="cmb-grapple-defense" size="3" disabled/></td>
+                        <td><input type="text" class="stat-value" id="cmb-trip-defense" size="3" disabled/></td>
+                        <td><input type="text" class="stat-value" id="cmb-disarm-defense" size="3" disabled/></td>
+                        <td><input type="text" class="stat-value" id="cmb-sunder-defense" size="3" disabled/></td>
+                        <td><input type="text" class="stat-value" id="cmb-bullrush-defense" size="3" disabled/></td>
+                        <td><input type="text" class="stat-value" id="cmb-overrun-defense" size="3" disabled/></td>
+                    </tr>
+                </table>
+            </div>
+            <div id="save-block" class="stat-block">
+                <table class="stat-table">
+                    <tr>
+                        <td class="label-medium center">Saving Throws</td>
+                        <td class="label-medium center">Total</td>
+                        <td></td>
+                        <td class="label-small center">Base</td>
+                        <td></td>
+                        <td class="label-small center">Ability</td>
+                        <td></td>
+                        <td class="label-small center">Magic</td>
+                        <td></td>
+                        <td class="label-small center">Misc</td>
+                        <td></td>
+                        <td class="label-small center">Epic</td>
+                        <td></td>
+                        <td class="label-small center">Temp</td>
+                    </tr>
+                    <tr>
+                        <td><div class="stat-label save-label">Fortitude</div></td>
+                        <td><input type="text" class="stat-value" id="save-fortitude" size="3" disabled/></td>
+                        <td>=</td>
+                        <td><input type="text" class="stat-value" id="save-fortitude-base" size="3" disabled/></td>
+                        <td>+</td>
+                        <td><input type="text" class="stat-value" id="save-fortitude-ability" size="3" disabled/></td>
+                        <td>+</td>
+                        <td><input type="text" class="stat-value" id="save-fortitude-magic" size="3" disabled/></td>
+                        <td>+</td>
+                        <td><input type="text" class="stat-value" id="save-fortitude-misc" size="3" disabled/></td>
+                        <td>+</td>
+                        <td><input type="text" class="stat-value" id="save-fortitude-epic" size="3" disabled/></td>
+                        <td>+</td>
+                        <td><input type="text" class="stat-value" id="save-fortitude-temp" size="3"/></td>
+                    </tr>
+                    <tr>
+                        <td><div class="stat-label save-label">Reflex</div></td>
+                        <td><input type="text" class="stat-value" id="save-reflex" size="3" disabled/></td>
+                        <td>=</td>
+                        <td><input type="text" class="stat-value" id="save-reflex-base" size="3" disabled/></td>
+                        <td>+</td>
+                        <td><input type="text" class="stat-value" id="save-reflex-ability" size="3" disabled/></td>
+                        <td>+</td>
+                        <td><input type="text" class="stat-value" id="save-reflex-magic" size="3" disabled/></td>
+                        <td>+</td>
+                        <td><input type="text" class="stat-value" id="save-reflex-misc" size="3" disabled/></td>
+                        <td>+</td>
+                        <td><input type="text" class="stat-value" id="save-reflex-epic" size="3" disabled/></td>
+                        <td>+</td>
+                        <td><input type="text" class="stat-value" id="save-reflex-temp" size="3"/></td>
+                    </tr>
+                    <tr>
+                        <td><div class="stat-label save-label">Will</div></td>
+                        <td><input type="text" class="stat-value" id="save-will" size="3" disabled/></td>
+                        <td>=</td>
+                        <td><input type="text" class="stat-value" id="save-will-base" size="3" disabled/></td>
+                        <td>+</td>
+                        <td><input type="text" class="stat-value" id="save-will-ability" size="3" disabled/></td>
+                        <td>+</td>
+                        <td><input type="text" class="stat-value" id="save-will-magic" size="3" disabled/></td>
+                        <td>+</td>
+                        <td><input type="text" class="stat-value" id="save-will-misc" size="3" disabled/></td>
+                        <td>+</td>
+                        <td><input type="text" class="stat-value" id="save-will-epic" size="3" disabled/></td>
+                        <td>+</td>
+                        <td><input type="text" class="stat-value" id="save-will-temp" size="3"/></td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+        <div id="right-column" class="column">
+        </div>
+
+        <script src="js/modern_dbg.js"></script>
+        <script>dicey_web.abilities.init();</script>
+    </body>
+</html>

@@ -1,0 +1,73 @@
+{
+:poolpoints 15
+:tablabel "0"
+:age 0
+:gender "Male"
+:suppressbiofields ""
+:haircolor ""
+:ability ("*LANGBONUS|TYPE:VIRTUAL|CATEGORY:*LANGBONUS|KEY:*LANGBONUS|APPLIEDTO:Abyssal|TYPE:" "Tiefling Language|TYPE:NORMAL|CATEGORY:Special Ability|KEY:Infernal ~ Tiefling Language|TYPE:TieflingLanguageTrait" "Sorcerer Bloodline|TYPE:NORMAL|CATEGORY:Special Ability|KEY:Abyssal Bloodline|TYPE:SpecialQuality.ClassSpecialization.SorcererBloodline|DESC:Some time ago, a demon spread its filth into your heritage." "FEAT|TYPE:NORMAL|CATEGORY:FEAT|KEY:Improved Initiative|TYPE:Combat.AberrantBloodline.ArcaneBloodline.DraconicBloodline.ElementalBloodline.FeyBloodline|DESC:Your quick reflexes allow you to react quickly to danger." "FEAT|TYPE:NORMAL|CATEGORY:FEAT|KEY:Elemental Spell|APPLIEDTO:Acid|TYPE:Metamagic|DESC:You can manipulate the elemental nature of your spells." "FEAT|TYPE:NORMAL|CATEGORY:FEAT|KEY:Combat Casting|TYPE:General.AberrantBloodline.ArcaneBloodline.UndeadBloodline.SerpentineBloodline|DESC:You are adept at spellcasting when threatened or distracted." "Favored Class Bonus|TYPE:NORMAL|CATEGORY:Special Ability|KEY:Bonus Hit Point|APPLIEDTO:,,,,,|TYPE:FavoredClassBonus" "Favored Class|TYPE:NORMAL|CATEGORY:Special Ability|KEY:Sorcerer|TYPE:FavoredClass")
+:money 495.0
+:gamemode "Pathfinder_RPG"
+:birthplace ""
+:autosortgear "Y"
+:allowdebt "N"
+:campaign "Pathfinder RPG for Game Masters (includes Monsters)"
+:class "Sorcerer|LEVEL:6|SKILLPOOL:0|SPELLBASE:CHA|CANCASTPERDAY:0,6,5,3"
+:weight 0
+:usetempmods "Y"
+:charactertype "PC"
+:charactername "Rajralin"
+:interests ""
+:catchphrase ""
+:classabilitieslevel ("Sorcerer=6|HITPOINTS:4|SKILLSGAINED:3|SKILLSREMAINING:0" "Sorcerer=5|HITPOINTS:6|SKILLSGAINED:3|SKILLSREMAINING:0" "Sorcerer=4|HITPOINTS:6|PRESTAT:CHA=1|SKILLSGAINED:3|SKILLSREMAINING:0" "Sorcerer=3|HITPOINTS:5|SKILLSGAINED:3|SKILLSREMAINING:0" "Sorcerer=2|HITPOINTS:4|SKILLSGAINED:3|SKILLSREMAINING:0" "Sorcerer=1|HITPOINTS:6|SKILLSGAINED:3|SKILLSREMAINING:0")
+:hairstyle ""
+:location ""
+:characterdmnotes ""
+:characterasset ""
+:userpool ("*LANGBONUS|POOLPOINTS:0.0" "Tiefling Language|POOLPOINTS:0.0" "Sorcerer Bloodline|POOLPOINTS:0.0" "FEAT|POOLPOINTS:0.0" "Favored Class Bonus|POOLPOINTS:0.0" "Favored Class|POOLPOINTS:0.0")
+:phobias ""
+:spellname ("Spark|TIMES:1|CLASS:Sorcerer|BOOK:Known Spells|SPELLLEVEL:0|SOURCE:[TYPE:CLASS|NAME:Sorcerer]" "Scorching Ray|TIMES:1|CLASS:Sorcerer|BOOK:Known Spells|SPELLLEVEL:2|SOURCE:[TYPE:CLASS|NAME:Sorcerer]" "Read Magic|TIMES:1|CLASS:Sorcerer|BOOK:Known Spells|SPELLLEVEL:0|SOURCE:[TYPE:CLASS|NAME:Sorcerer]" "Ray of Frost|TIMES:1|CLASS:Sorcerer|BOOK:Known Spells|SPELLLEVEL:0|SOURCE:[TYPE:CLASS|NAME:Sorcerer]" "Magic Missile|TIMES:1|CLASS:Sorcerer|BOOK:Known Spells|SPELLLEVEL:1|SOURCE:[TYPE:CLASS|NAME:Sorcerer]" "Light|TIMES:1|CLASS:Sorcerer|BOOK:Known Spells|SPELLLEVEL:0|SOURCE:[TYPE:CLASS|NAME:Sorcerer]" "Grease|TIMES:1|CLASS:Sorcerer|BOOK:Known Spells|SPELLLEVEL:1|SOURCE:[TYPE:CLASS|NAME:Sorcerer]" "Fireball|TIMES:1|CLASS:Sorcerer|BOOK:Known Spells|SPELLLEVEL:3|SOURCE:[TYPE:CLASS|NAME:Sorcerer]" "Detect Magic|TIMES:1|CLASS:Sorcerer|BOOK:Known Spells|SPELLLEVEL:0|SOURCE:[TYPE:CLASS|NAME:Sorcerer]" "Chill Touch|TIMES:1|CLASS:Sorcerer|BOOK:Known Spells|SPELLLEVEL:1|SOURCE:[TYPE:CLASS|NAME:Sorcerer]" "Burning Hands|TIMES:1|CLASS:Sorcerer|BOOK:Known Spells|SPELLLEVEL:1|SOURCE:[TYPE:CLASS|NAME:Sorcerer]" "Bleed|TIMES:1|CLASS:Sorcerer|BOOK:Known Spells|SPELLLEVEL:0|SOURCE:[TYPE:CLASS|NAME:Sorcerer]" "Acid Splash|TIMES:1|CLASS:Sorcerer|BOOK:Known Spells|SPELLLEVEL:0|SOURCE:[TYPE:CLASS|NAME:Sorcerer]" "Acid Arrow|TIMES:1|CLASS:Sorcerer|BOOK:Known Spells|SPELLLEVEL:2|SOURCE:[TYPE:CLASS|NAME:Sorcerer]")
+:language ("Abyssal" "Common" "Infernal")
+:characterbio ""
+:equipset ("Natural-Primary|ID:0.1.6|VALUE:Claw (Natural/Primary)|QUANTITY:1.0|USETEMPMODS:Y" "Both Hands|ID:0.1.5|VALUE:Longspear +2|QUANTITY:1.0|USETEMPMODS:Y" "Ring|ID:0.1.4|VALUE:Ring of Feather Falling|QUANTITY:1.0|USETEMPMODS:Y" "Shoulders|ID:0.1.3|VALUE:Cloak of Resistance +1|QUANTITY:1.0|USETEMPMODS:Y" "Wrist|ID:0.1.2|VALUE:Bracers of Armor +2|QUANTITY:1.0|USETEMPMODS:Y" "Torso|ID:0.1.1|VALUE:Outfit (Explorer's)|QUANTITY:1.0|USETEMPMODS:Y" "Default Set|ID:0.1|USETEMPMODS:Y")
+:autoresizegear "Y"
+:version "6.00.01"
+:playername "Ed"
+:skillsoutputorder "0"
+:city ""
+:usehigherprepped "N"
+:usehigherknown "N"
+:experience 23000
+:ageset "0:0:0:0:0:0:0:0:0:0"
+:speechpattern ""
+:stat {:str 12, :dex 12, :con 12, :int 11, :wis 8, :cha 17}
+:race "Tiefling"
+:skill ("Knowledge (Arcana)|OUTPUTORDER:12|CLASSBOUGHT:[CLASS:Sorcerer|RANKS:6.0|COST:1|CLASSSKILL:Y]" "Spellcraft|OUTPUTORDER:17|CLASSBOUGHT:[CLASS:Sorcerer|RANKS:6.0|COST:1|CLASSSKILL:Y]" "Swim|OUTPUTORDER:20|" "Survival|OUTPUTORDER:19|" "Stealth|OUTPUTORDER:18|CLASSBOUGHT:[CLASS:Sorcerer|RANKS:6.0|COST:1|CLASSSKILL:N]" "Sense Motive|OUTPUTORDER:16|" "Ride|OUTPUTORDER:15|" "Perform (Untrained)|OUTPUTORDER:14|" "Perception|OUTPUTORDER:13|" "Intimidate|OUTPUTORDER:11|" "Heal|OUTPUTORDER:10|" "Fly|OUTPUTORDER:9|" "Escape Artist|OUTPUTORDER:8|" "Disguise|OUTPUTORDER:7|" "Diplomacy|OUTPUTORDER:6|" "Craft (Untrained)|OUTPUTORDER:5|" "Climb|OUTPUTORDER:4|" "Bluff|OUTPUTORDER:3|" "Appraise|OUTPUTORDER:2|" "Acrobatics|OUTPUTORDER:1|")
+:skincolor ""
+:equipname ("Outfit (Explorer's)|OUTPUTORDER:6|COST:0|WT:8.0|QUANTITY:1.0|CUSTOMIZATION:[BASEITEM:Outfit (Explorer's)|DATA:NAME=Outfit (Explorer's)$COSTMOD=-10]" "Claw (Natural/Primary)|OUTPUTORDER:2|COST:0|WT:0.0|QUANTITY:1.0|CUSTOMIZATION:[BASEITEM:Claw|DATA:KEY=Claw]" "Cloak of Resistance +1|OUTPUTORDER:5|COST:1000|WT:1.0|QUANTITY:1.0" "Longspear +2|OUTPUTORDER:3|COST:8305.0|WT:9.0|QUANTITY:1.0|CUSTOMIZATION:[BASEITEM:Longspear|DATA:NAME=Longspear +2$EQMOD=BRACE.WOOD.PLUS2W]" "Ring of Feather Falling|OUTPUTORDER:4|COST:2200|WT:0.0|QUANTITY:1.0" "Bracers of Armor +2|OUTPUTORDER:1|COST:4000|WT:1.0|QUANTITY:1.0")
+:personalitytrait1 ""
+:autospells "Y"
+:characterdesc ""
+:poolpointsavail "15"
+:calcequipset "0.1"
+:rollmethod "2|EXPRESSION:Standard Fantasy"
+:pcgversion "2.0"
+:charactercomp ""
+:eyecolor ""
+:align "Chaotic Neutral"
+:personalitytrait2 ""
+:ignorecost "N"
+:tabname ""
+:loadcompanions "N"
+:region "None"
+:handed "Right"
+:featpool "-3.0"
+:weaponprof ("Shortspear" "Sickle" "Sling" "Spear" "Spear (Boar)" "Spells (Ray)" "Spells (Touch)" "Stake" "Unarmed Strike")
+:portrait ""
+:height 0
+:birthday ""
+:templatesapplied "[NAME:Creature with Class Levels]"
+:charactermagic ""
+:purchasepoints "Y|TYPE:Standard Fantasy"
+:experiencetable "Medium"
+}

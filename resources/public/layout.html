@@ -1,0 +1,71 @@
+<!DOCTYPE HTML>
+<html>
+  <head>
+    <meta charset="UTF-8"/>
+    <style type="text/css">
+      header, section, footer, aside, nav, article, figure
+      {
+        display: block;
+      }
+    </style>
+    <title>Layout Example</title>
+  </head>
+  <body>
+    <header>
+      <h1>Header</h1>
+      <p>Header P</p>
+    </header>
+    <section>
+      <h1>Section 1</h1>
+      <p>Section text that goes on and on and on...</p>
+    </section>
+    <section>
+      <h1>Section 2</h1>
+      <p>Section text that goes on and on and on...</p>
+    </section>
+    <article>
+      <h1>Article 1</h1>
+      <p>Article text that goes on and on and on...</p>
+    </article>
+    <article>
+      <h1>Article 2</h1>
+      <p>Article text that goes on and on and on...</p>
+    </article>
+    <article>
+      <h1>Article 3</h1>
+      <p>Article text that goes on and on and on...</p>
+      <p><time datetime="2013-07-26">pubdate</time></p>
+    </article>
+    <nav>
+      <a href="http://www.google.com">Google</a> |
+      <a href="http://www.redhat.com">Red Hat</a> |
+      <a href="http://www.wsj.com">Wall Street Journal</a>
+    </nav>
+    <footer>
+      <h1>Footer</h1>
+      <p>Footer P</p>
+    </footer>
+  <fieldset>
+    <legend>
+      The first <strong>Button</strong> was created programmatically,
+      the second by decorating an <strong>&lt;input&gt;</strong> element:&nbsp;
+    </legend>
+    <div id="b1"></div>
+    <label>
+      Enable button:<input type="checkbox" id="b1_enable" checked/>
+    </label>
+    <br/>
+    <br/>
+    <input type="button" id="b2" title="Tooltip extracted from title"
+        value="My Button" disabled="true"/><br/>
+    <label>Enable button:<input type="checkbox" id="b2_enable"/></label>
+    <br/>
+  </fieldset>
+  <fieldset class="goog-debug-panel">
+    <legend>Event Log</legend>
+    <div id="log"></div>
+  </fieldset>
+    <script src="js/modern_dbg.js"></script>
+    <script>dicey_web.modern.init();</script>
+  </body>
+</html>
