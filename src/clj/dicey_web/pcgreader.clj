@@ -1,6 +1,7 @@
 (ns dicey-web.pcgreader
   (:require [clojure.java.io :use reader]
             [clojure.string :use split]
+            [instaparse.core :as insta]
             )
   )
 
@@ -67,7 +68,7 @@
       )
 
     true
-    (let [[name value] (split v #":")]
+    (let [[name value] (split v #":" 2)]
       (parse-stat-line (merge-map m (make-keywords [name value])) more)
       )
     )
@@ -182,8 +183,56 @@
     )
   )
 
-(def char-file
-  (parse-lines (file-lines "/home/ryan/pcgen6001/characters/Rajralin.pcg"))
+; Entire file is a map
+; Everything before a : is a key
+; Everything after a : is a value
+; Names are keys in maps as keywords
+; Values without | are lists
+; Values containing | are maps
+; Value maps are keyed by everything before the first |
+
+(def testfile "/home/ryan/pcgen6001/characters/Rajralin.pcg")
+
+;(file-lines testfile)
+
+(def testfilestr (apply str (interleave (file-lines testfile) (repeat "\n")))
   )
 
-((:ability char-file) "FEAT")
+(def charfile-parser
+  (insta/parser
+   "
+   character = line*
+
+   <kvsep> = <':'>
+   <kvdelim> = <'|'>
+
+   <word> = #'[^:\\|\\[\\]]+'
+   key = word
+   val = word?
+
+   kv = key kvsep val
+   listkv = key kvsep listval
+
+   listval = <'['> (kv | kvdelim)+  <']'>
+   mapval = key (kvdelim (kv | listkv))+ kvdelim?
+
+   line = key kvsep (val | mapval | listval) <'\n'>
+   "
+   )
+  )
+
+(def parsetransform
+  {
+   :key str
+   :val str
+   }
+  )
+
+(insta/transform parsetransform (charfile-parser testfilestr)
+                 )
+
+;(def char-file
+;  (parse-lines (file-lines testfile))
+;  )
+
+;((:ability char-file) "FEAT")

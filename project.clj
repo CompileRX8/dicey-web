@@ -8,6 +8,7 @@
                  [hiccups "0.2.0"]
                  [shoreleave/shoreleave-remote-ring "0.3.0"]
                  [shoreleave/shoreleave-remote "0.3.0"]
+                 [instaparse "1.2.2"]
                  ]
 
   :hooks [leiningen.cljsbuild]
