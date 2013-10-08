@@ -191,13 +191,6 @@
 ; Values containing | are maps
 ; Value maps are keyed by everything before the first |
 
-(def testfile "/home/ryan/pcgen6001/characters/Rajralin.pcg")
-
-;(file-lines testfile)
-
-(def testfilestr (apply str (interleave (file-lines testfile) (repeat "\n")))
-  )
-
 (def charfile-parser
   (insta/parser
    "
@@ -205,34 +198,33 @@
 
    <kvsep> = <':'>
    <kvdelim> = <'|'>
+   <linesep> = <'\n'>
+   <liststart> = <'['>
+   <listend> = <']'>
 
-   <word> = #'[^:\\|\\[\\]]+'
-   key = word
-   val = word?
+   <word> = #'[^:|\\[\\]\\n]+'
+   <key> = word
+   <val> = word | ''
 
    kv = key kvsep val
    listkv = key kvsep listval
 
-   listval = <'['> (kv | kvdelim)+  <']'>
+   listval = liststart (kv | kvdelim)+ listend
    mapval = key (kvdelim (kv | listkv))+ kvdelim?
 
-   line = key kvsep (val | mapval | listval) <'\n'>
+   <numval> = #'\\d+'
+   numlist = numval (kvsep numval)+
+
+   line = key kvsep (val | mapval | listval | numlist) linesep
    "
    )
   )
 
 (def parsetransform
   {
-   :key str
-   :val str
+   :line (fn [k & v] {(keyword (.toLowerCase k)) v})
+   :kv (fn [k & v] {(keyword (.toLowerCase k)) v})
+   :listval list
+   :mapval (fn [k & v] {(keyword k) v})
    }
   )
-
-(insta/transform parsetransform (charfile-parser testfilestr)
-                 )
-
-;(def char-file
-;  (parse-lines (file-lines testfile))
-;  )
-
-;((:ability char-file) "FEAT")
