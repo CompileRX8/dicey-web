@@ -6,26 +6,23 @@
    )
   )
 
-(def tf "/home/ryan/pcgen6001/characters/Rajralin.pcg")
+(def testfile "/home/ryan/pcgen6001/characters/Rajralin.pcg")
 
-;(file-lines testfile)
-
-(def tfstr (apply str (interleave (file-lines tf) (repeat "\n")))
-  )
-
-(def tftree (charfile-parser tfstr))
-
-tftree
-
-(insta/transform
- parsetransform
- tftree
- )
-
-
+(def testcontents (file-lines testfile))
 
 ;(def char-file
 ;  (parse-lines (file-lines testfile))
 ;  )
 
 ;((:ability char-file) "FEAT")
+
+testcontents
+
+(def rawparse (charfile-parser testcontents))
+
+rawparse
+
+(map (fn [[k v]] [k (parse-val k v)])
+     (parse-charfile testcontents
+                         )
+     )
