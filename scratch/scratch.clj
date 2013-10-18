@@ -10,19 +10,16 @@
 
 (def testcontents (file-lines testfile))
 
-;(def char-file
-;  (parse-lines (file-lines testfile))
-;  )
-
-;((:ability char-file) "FEAT")
-
 testcontents
 
 (def rawparse (charfile-parser testcontents))
 
 rawparse
 
-(map (fn [[k v]] [k (parse-val k v)])
-     (parse-charfile testcontents
-                         )
-     )
+(def xfparse (parse-charfile testcontents))
+
+xfparse
+
+(:ability xfparse)
+
+(parse-val :stat (:stat xfparse))

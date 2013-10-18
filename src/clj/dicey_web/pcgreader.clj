@@ -1,8 +1,7 @@
 (ns dicey-web.pcgreader
-  (:require [clojure.java.io :use reader]
-            [clojure.string :use split]
-            [instaparse.core :as insta]
-            )
+  (:use [clojure.java.io :only [reader]]
+        )
+  (:require '[instaparse.core :as insta])
   )
 
 (defn- line-filter [line]
@@ -35,27 +34,28 @@
 (def parsers {
               :stat (fn [l]
                       (into {}
-                            (map #(let [strs (split %1 #"[|:]")
-                                        stat (make-keyword (first strs))
-                                        score (parse-int (second (rest strs)))
-                                        ]
-                                    [stat score]
-                                    )
-                                 l
+                            (map (fn [[k v]] [k (parse-int v)])
+                                 (partition 2
+                                            (filter #(not= :score %)
+                                                    (flatten l)
+                                                    )
+                                            )
                                  )
                             )
                       )
               :language (fn [l]
-                          (filter #(not= "LANGUAGE" %1)
-                                  (split l #"[\\|:]")
-                                  )
+                          (map name
+                               (filter #(not= :language %)
+                                       (flatten l)
+                                       )
+                               )
                           )
               :weaponprof (fn [l]
-                            (filter #(not= "WEAPON" %1)
-                                    (split
-                                     (replace l #"\[|\]" "")
-                                     #"[\\|:]")
-                                    )
+                            (sort
+                             (filter #(not= :weapon %)
+                                     (flatten l)
+                                     )
+                             )
                             )
 ;              :ability parse-stats
 ;              :class parse-stats
@@ -158,7 +158,11 @@
   )
 
 (defn parse-charfile [contents]
-  (reduce keyreducer {}
-          (insta/transform parsetransform (charfile-parser contents))
-          )
+  (into {}
+        (map (fn [[k v]] [k (parse-val k v)])
+             (reduce keyreducer {}
+                     (insta/transform parsetransform (charfile-parser contents))
+                     )
+             )
+        )
   )
